@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: center;
+  background-color: rgb(248, 248, 248);
+}
+
+.eating{
+  width: 260px;
+  min-height: 200px;
+  margin: 20px;
+  padding: 20px;
+  border: 3px solid gray;
+  display: flex;
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: white;
+}
+
+.eating:hover{
+  cursor:pointer
+}
+
+.add-eating{
+  margin: auto;
+  color: gray;
+}
+
