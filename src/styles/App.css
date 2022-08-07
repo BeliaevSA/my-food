@@ -5,15 +5,50 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  /* background-color: rgb(248, 248, 248); */
 }
 
 .App {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 4rem 20px;
   justify-content: center;
-  background-color: rgb(248, 248, 248);
+  align-content: center;
+  background-color: rgb(243, 236, 236);
+  min-height: 100vh;
+}
+
+.header{
+  /* background-color: rgb(250, 248, 139); */
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  z-index: 2;
+}
+
+.header-link:hover {
+  cursor: pointer;
+}
+
+.search-recipe {
+  text-align: center;
+  padding-top: 70px;
+  background-color: rgb(243, 236, 236)
+}
+
+.search-recipe h3{
+  margin-bottom: 5px;
+}
+
+.search-recipe input {
+  width: 250px;
+  height: 30px;
+  padding: 5px;
 }
 
 .eating{
@@ -37,4 +72,186 @@
   margin: auto;
   color: gray;
 }
+
+.recipes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem 20px;
+  justify-content: center;
+  background-color: rgb(243, 236, 236);
+
+}
+
+.recipe {
+  padding: 15px;
+  flex-basis: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-self: flex-start;
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px;
+  position: relative;
+}
+
+.nameEating {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.recipeImg{
+  width: 100%;
+  height: 180px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.recipe h3 {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.ccal {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn-recipe{
+  background-color: green;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  /* margin: 5px 20px; */
+  border-radius: 30px;
+  font-size: 0.75rem;
+  border: none;
+}
+
+.btn-add-recipe{
+  background-color: green;
+  color: white;
+  /* padding: 0.8rem; */
+  font-size: 1.8rem;
+  width: 40px;
+  border-radius: 200px;
+  border: none;
+  line-height: 2.4rem;
+}
+
+.btn-recipe:hover,
+.btn-add-recipe{
+  cursor: pointer;
+}
+
+.ingredients{
+  font-size: 0.7rem;
+  max-height: 500px;
+  transition: .5s all;
+  margin-top: 10px;
+}
+.ingredients-none{
+  
+  /* transition: height 0.5s 0.5s ease-out; */
+  transition: .5s all;
+  overflow: hidden;
+  max-height: 0;
+  font-size: 0;
+
+}
+
+.ingredients li{
+  margin-left: 15px;
+  
+}
+
+.recipeInfo{
+  padding: 4rem 40px;
+  background-color: rgb(243, 236, 236);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.recipeInfo_container{
+  width: 300px;
+  padding: 10px;
+  flex-basis: 400px;
+  flex-shrink: 0;
+  /* background-color: white; */
+  /* margin: 30px; */
+}
+
+.recipeInfo__img{
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.container-callories{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  /* height: 100px; */
+  border-radius: 20px;
+  padding: 10px 30px;
+}
+
+.callories-item{
+  /* padding: 10px; */
+  text-align: center;
+}
+
+.callories-item p{
+  font-size: 0.7rem;
+}
+
+.recipeInfo__ingredients,
+.recipeInfo__instruction{
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.ingredients-list{
+  margin: 10px 0 0 20px;
+  font-size: 1rem;
+}
+
+.ingredients-list li{
+  line-height: 1.4rem;
+}
+
+.instruction-item{
+  margin-top: 10px;
+}
+
+.instruction-item p{
+  margin-top: 10px;
+  line-height: 1.4rem;
+
+}
+
+@media screen and (max-width: 580px){
+  .recipe,
+  .recipeInfo_container,
+  .eating {
+    flex-basis: 100%;
+  }
+}
+
 

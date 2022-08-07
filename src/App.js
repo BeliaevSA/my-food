@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Eating from './components/Eating';
 import './styles/App.css';
-import './styles/recipes.css';
+import { Header } from './components/Header'
 
 
 function App() {
@@ -24,13 +24,15 @@ function App() {
   }
 
   // console.log(isBreakfast)
-  return (
-    <div className="App">
-      
-      <Eating name='завтрак' value='breakfast' eatingState={isBreakfast} changeEatingState={changeValueBreakfast}/>
-      <Eating name='перекус' value='snack' eatingState={isSnack} changeEatingState={changeValueSnack}/>
-      <Eating name='обед' value='lunch' eatingState={isLunch} changeEatingState={changeValueLunch}/>
-      <Eating name='ужин' value='supper' eatingState={isSupper} changeEatingState={changeValueSupper}/>
+  return ( 
+    <div>
+      <Header title={'My Food'} link={'app'}/>
+      <div className="App" name='app'>
+        <Eating name='завтрак' value='breakfast' eatingState={isBreakfast} changeEatingState={changeValueBreakfast}/>
+        <Eating name='перекус' value='snack' eatingState={isSnack} changeEatingState={changeValueSnack}/>
+        <Eating name='обед' value='lunch' eatingState={isLunch} changeEatingState={changeValueLunch}/>
+        <Eating name='ужин' value='supper' eatingState={isSupper} changeEatingState={changeValueSupper}/>
+      </div>
     </div>
   );
 }

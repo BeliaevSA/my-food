@@ -12,6 +12,7 @@ const RecipeAll = (props) => {
   }
 
   const recipe = props.recipe
+
   return (
     <div className="recipe">
       <Recipe 
