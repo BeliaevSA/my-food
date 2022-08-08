@@ -5,6 +5,8 @@ import { RecipeIngredients } from '../components/RecipeIngredients'
 import { RecipeCcal } from '../components/RecipeCcal'
 import { RecipeInstruction } from '../components/RecipeInstruction'
 import { Header } from '../components/Header'
+import { Button } from '../components/Button'
+import { Link } from 'react-router-dom'
 import '../styles/App.css';
 // import './styles/recipeInfo.css';
 
@@ -14,7 +16,7 @@ function RecipeInfo (props){
     return recipe.id === +localStorage.getItem('recipeShow')
   })[0]
   return (
-    <div>
+    <div className='recipeInfo-body'>
       <Header title={recipe.name} link={'recipeInfo'}/>
       <div className='recipeInfo' name='recipeInfo'>
         <section className='recipeInfo_container'>
@@ -36,7 +38,16 @@ function RecipeInfo (props){
             <RecipeInstruction recipeInstruction={recipe.cookingMethod} className='instruction-item'/>
           </div>
         </section>
+        
       </div>
+      <Link to={'/'} 
+          className="" 
+          onClick={() => localStorage.setItem(`eating-${localStorage.getItem('eatingValue')}`, recipe.id)}
+        >
+          {/* <Button value='+' className='btn-add-recipe'/> */}
+          <Button style={{fontSize: '1.2rem', margin: '0 auto 50px'}} className='btn-recipe' value="Добавить"/>
+        </Link>
+      
     </div>
   )
 }

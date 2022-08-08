@@ -8,21 +8,25 @@
   /* background-color: rgb(248, 248, 248); */
 }
 
+body{
+  background-color: rgb(243, 236, 236);
+}
+
 .App {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 4rem 20px;
+  padding: 20px 20px;
   justify-content: center;
   align-content: center;
-  background-color: rgb(243, 236, 236);
   min-height: 100vh;
 }
 
 .header{
-  /* background-color: rgb(250, 248, 139); */
+  display: block;
   background-color: white;
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
   text-align: center;
   padding: 10px;
@@ -31,14 +35,17 @@
   z-index: 2;
 }
 
-.header-link:hover {
+/* .header-link:hover {
+  cursor: pointer;
+} */
+
+.header:hover {
   cursor: pointer;
 }
 
 .search-recipe {
   text-align: center;
-  padding-top: 70px;
-  background-color: rgb(243, 236, 236)
+  padding-top: 20px;
 }
 
 .search-recipe h3{
@@ -46,9 +53,11 @@
 }
 
 .search-recipe input {
-  width: 250px;
-  height: 30px;
-  padding: 5px;
+  /* width: 250px; */
+  font-size: 1.2rem;
+  height: 35px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .eating{
@@ -79,8 +88,6 @@
   flex-wrap: wrap;
   padding: 1rem 20px;
   justify-content: center;
-  background-color: rgb(243, 236, 236);
-
 }
 
 .recipe {
@@ -179,12 +186,15 @@
 }
 
 .recipeInfo{
-  padding: 4rem 40px;
-  background-color: rgb(243, 236, 236);
+  padding: 20px 40px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.recipeInfo-body{
+  text-align: center;
 }
 
 .recipeInfo_container{
@@ -192,8 +202,7 @@
   padding: 10px;
   flex-basis: 400px;
   flex-shrink: 0;
-  /* background-color: white; */
-  /* margin: 30px; */
+  text-align: left;
 }
 
 .recipeInfo__img{
@@ -205,7 +214,6 @@
   background-color: white;
   display: flex;
   justify-content: space-between;
-  /* height: 100px; */
   border-radius: 20px;
   padding: 10px 30px;
 }
@@ -250,7 +258,20 @@
   .recipe,
   .recipeInfo_container,
   .eating {
-    flex-basis: 100%;
+    flex-basis: 90%;
+  }
+
+  .search-recipe input{
+    width: calc(100% - 40px);
+  }
+
+  .recipes,
+  .App {
+    padding: 0;
+  }
+
+  .recipeInfo{
+    padding: 10px
   }
 }
 

@@ -38,9 +38,7 @@ function Recipes(props){
       <div className="recipes" name='recipe'>
         {recipes.filter((recipe) => {
           return recipe.name.toLowerCase().includes(searchRecipe.toLowerCase())
-        }
-
-        ).map((recipe, index) => {
+        }).map((recipe, index) => {
           return (
           <RecipeAll key={index} nameEating={props.nameEating} recipe={recipe} eating={localStorage.getItem('eatingValue')} />
           )
