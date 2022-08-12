@@ -4,7 +4,8 @@ import { RecipeImg } from '../components/RecipeImg'
 import { RecipeIngredients } from '../components/RecipeIngredients'
 import { RecipeCcal } from '../components/RecipeCcal'
 import { RecipeInstruction } from '../components/RecipeInstruction'
-import { Header } from '../components/Header'
+import { HeaderTitle } from '../components/HeaderTitle'
+import { HeaderButtonBack } from '../components/HeaderButtonBack'
 import { Button } from '../components/Button'
 import { Link } from 'react-router-dom'
 import '../styles/App.css';
@@ -17,7 +18,10 @@ function RecipeInfo (props){
   })[0]
   return (
     <div className='recipeInfo-body'>
-      <Header title={recipe.name} link={'recipeInfo'}/>
+      <header className="header" style={{paddingRight: 70}}>
+        <HeaderButtonBack toPath='/'/>
+        <HeaderTitle title={recipe.name} toName='searchRecipe'/>
+      </header>
       <div className='recipeInfo' name='recipeInfo'>
         <section className='recipeInfo_container'>
           <img 
@@ -38,15 +42,13 @@ function RecipeInfo (props){
             <RecipeInstruction recipeInstruction={recipe.cookingMethod} className='instruction-item'/>
           </div>
         </section>
-        
       </div>
-      <Link to={'/'} 
-          className="" 
-          onClick={() => localStorage.setItem(`eating-${localStorage.getItem('eatingValue')}`, recipe.id)}
-        >
-          {/* <Button value='+' className='btn-add-recipe'/> */}
-          <Button style={{fontSize: '1.2rem', margin: '0 auto 50px'}} className='btn-recipe' value="Добавить"/>
-        </Link>
+      {/* <Link to={'/'} 
+        className="" 
+        onClick={() => localStorage.setItem(`eating-${localStorage.getItem('eatingValue')}`, recipe.id)}
+      >
+        <Button style={{fontSize: '1.2rem', margin: '0 auto 50px'}} className='btn-recipe' value="Добавить"/>
+      </Link> */}
       
     </div>
   )

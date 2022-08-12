@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Eating from './components/Eating';
 import './styles/App.css';
-import { Header } from './components/Header'
+import { HeaderTitle } from './components/HeaderTitle'
 
 
 function App() {
@@ -26,7 +26,9 @@ function App() {
   // console.log(isBreakfast)
   return ( 
     <div>
-      <Header title={'My Food'} link={'app'}/>
+      <header className="header" >
+        <HeaderTitle title='My Food' toName='app'/>
+      </header>
       <div className="App" name='app'>
         <Eating name='завтрак' value='breakfast' eatingState={isBreakfast} changeEatingState={changeValueBreakfast}/>
         <Eating name='перекус' value='snack' eatingState={isSnack} changeEatingState={changeValueSnack}/>

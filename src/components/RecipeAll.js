@@ -7,7 +7,7 @@ import { useState } from "react"
 const RecipeAll = (props) => {
   const [valueButton, setValueButton] = useState(true)
 
-  const changeValueButton = (valueButton) => {
+  const changeValueButton = () => {
     setValueButton(valueButton => !valueButton)
   }
 
