@@ -2,6 +2,7 @@ import breakfast from '../recipes/recipes-breakfast.json'
 import snack from '../recipes/recipes-snack.json'
 import lunch from '../recipes/recipes-lunch.json'
 import supper from '../recipes/recipes-supper.json'
+import adding from '../recipes/recipes-adding.json'
 import '../styles/App.css';
 import RecipeAll from '../components/RecipeAll'
 import { HeaderTitle } from '../components/HeaderTitle'
@@ -30,10 +31,14 @@ function Recipes(props){
       recipes = supper
       headerTitle = 'Ужин'
       break
+    case 'adding':
+      recipes = adding
+      headerTitle = 'Ужин'
+      break
     default: break
   };
 
-  const [valueFilterButton, setValueFilterButton] = useState(false)
+  const [valueFilterButton, setValueFilterButton] = useState(true)
 
   const changeValueFilterButton = () => {
     setValueFilterButton(valueFilterButton => !valueFilterButton)
@@ -44,7 +49,7 @@ function Recipes(props){
   const [ finishArrFilterRecipes, createFinishArrFilterRecipes] = useState(recipes)
 
   const useFilterRecipe = (ev) => {
-    ev.preventDefault()
+    // ev.preventDefault()
     let finishFilterRecipes = recipes
     const arrFilterRecipes = Object.entries(filterRecipes)
     arrFilterRecipes.forEach((item) => {
@@ -75,20 +80,26 @@ function Recipes(props){
   }
   return (
     <div>
-      <header className="header">
-        <HeaderButtonBack toPath='/'/>
-        <HeaderTitle title={headerTitle} toName={valueFilterButton ? 'recipe' : 'searchRecipe' }/>
-        <Button value='&#128269;' className='header-btns__search' onclick={changeValueFilterButton}/>
+      <header className="header-container">
+        <div className="header">
+          <HeaderButtonBack toPath='/'/>
+          <HeaderTitle title={headerTitle} toName='searchRecipe'/>
+          <Button value='&#128269;' className='header-btns__search' onclick={changeValueFilterButton}/>
+        </div>
+        <SearchRecipe 
+          changeSearchRecipe={changeSearchRecipe} 
+          searchRecipe={searchRecipe} 
+          className={valueFilterButton ? "search-recipe-none" : "search-recipe"} 
+          filterRecipes={filterRecipes} 
+          setFilterRecipe={setFilterRecipe}
+          useFilterRecipe={useFilterRecipe}
+          changeValueFilterButton={changeValueFilterButton}
+        />
       </header>
-      <SearchRecipe 
-        changeSearchRecipe={changeSearchRecipe} 
-        searchRecipe={searchRecipe} 
-        className={valueFilterButton ? "search-recipe-none" : "search-recipe"} 
-        filterRecipes={filterRecipes} 
-        setFilterRecipe={setFilterRecipe}
-        useFilterRecipe={useFilterRecipe}/>
-      <h3>Поиск рецепта</h3>
-      <input type='text' className='input_search' onChange={handleChange} value={props.searchRecipe} autoComplete="off" />
+      <div className='searchRecipe-container'>
+        <h3 name='searchRecipe'>Поиск рецепта</h3>
+        <input type='text' className='input_search' onChange={handleChange} value={props.searchRecipe} autoComplete="off" />
+      </div>
       <div className="recipes" name='recipe'>
         
         {finishArrFilterRecipes.filter((recipe) => {

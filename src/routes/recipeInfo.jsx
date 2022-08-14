@@ -18,9 +18,11 @@ function RecipeInfo (props){
   })[0]
   return (
     <div className='recipeInfo-body'>
-      <header className="header" style={{paddingRight: 70}}>
-        <HeaderButtonBack toPath='/'/>
-        <HeaderTitle title={recipe.name} toName='searchRecipe'/>
+      <header className="header-container" style={{paddingRight: 70}}>
+        <div className="header">
+          <HeaderButtonBack toPath='/'/>
+          <HeaderTitle title={recipe.name} toName='searchRecipe'/>
+        </div>
       </header>
       <div className='recipeInfo' name='recipeInfo'>
         <section className='recipeInfo_container'>

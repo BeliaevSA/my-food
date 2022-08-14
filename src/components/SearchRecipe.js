@@ -2,24 +2,36 @@ import { FilterRecipes } from './FilterRicepes'
 
 export const SearchRecipe = (props) => {
   
-  // const handleChange = (ev) => {
-  //   ev.preventDefault()
-  //   props.changeSearchRecipe(ev.target.value)
-  // }
 
   const changeStateFilter = (ev) => {
     let newState = {...props.filterRecipes}
     newState[ev.target.dataset.value] = ev.target.checked
     props.setFilterRecipe(newState)
   }
-  // console.log(props.filterRecipes)
 
+  const handlerClickShow = () => {
+    props.useFilterRecipe()
+    props.changeValueFilterButton()
+  }
+  const  handlerClickReset = (ev) => {
+    (() => {
+      return props.setFilterRecipe({})
+      // console.log(props.filterRecipes)
+    })()
+    
+    // props.useFilterRecipe()
+    // console.log(props.filterRecipes)
+  }
+  // console.log(props.filterRecipes)
   return (
-    <form action="" name='searchRecipe' className={props.className} onSubmit={(ev) => ev.preventDefault} >
-      {/* <h3>Поиск рецепта</h3>
-      <input type='text' className='input_search' onChange={handleChange} value={props.searchRecipe} autoComplete="off" /> */}
+    <form action=""  className={props.className} onSubmit={(ev) => ev.preventDefault()} >
       <FilterRecipes changeStateFilter={changeStateFilter}/>
-      <input type='submit' className="input_submit" value='Показать' onClick={props.useFilterRecipe}/>
+      <div className='btns'style={{padding: '0 20px', justifyContent: 'center'}}>
+        <input type='submit' className="input_submit" style={{backgroundColor: 'green', color: 'white'}} value='Показать рецепты' onClick={handlerClickShow}/>
+        <input type='reset' className="input_submit" value='Сбросить фильтр' onClick={handlerClickReset}/>
+      </div>
     </form>
   )
 }
+// name='searchRecipe'
+// () => {props.useFilterRecipe(); props.changeValueFilterButton()}
