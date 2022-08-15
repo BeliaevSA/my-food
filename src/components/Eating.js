@@ -37,7 +37,10 @@ const Eating = (props) => {
     return (
       
       <Link to={'/recipes'} className="eating" onClick={() => localStorage.setItem('eatingValue', props.value)}>
-        <EatingName name={props.name} value={props.value}/>
+        {/* <EatingName name={props.name} value={props.value}/> */}
+        <h2 className="add-eating">
+          Выбрать {props.name}
+        </h2>
       </Link>
     )
   // }

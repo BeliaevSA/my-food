@@ -3,6 +3,7 @@ import snack from '../recipes/recipes-snack.json'
 import lunch from '../recipes/recipes-lunch.json'
 import supper from '../recipes/recipes-supper.json'
 import adding from '../recipes/recipes-adding.json'
+import { recipesAll } from '../recipes/recipesAll'
 import '../styles/App.css';
 import RecipeAll from '../components/RecipeAll'
 import { HeaderTitle } from '../components/HeaderTitle'
@@ -33,9 +34,11 @@ function Recipes(props){
       break
     case 'adding':
       recipes = adding
-      headerTitle = 'Ужин'
+      headerTitle = 'Дополнительные рецепты'
       break
-    default: break
+    default:
+      recipes = recipesAll
+      headerTitle = 'Все рецепты'
   };
 
   const [valueFilterButton, setValueFilterButton] = useState(true)
@@ -49,30 +52,20 @@ function Recipes(props){
   const [ finishArrFilterRecipes, createFinishArrFilterRecipes] = useState(recipes)
 
   const useFilterRecipe = (ev) => {
-    // ev.preventDefault()
     let finishFilterRecipes = recipes
     const arrFilterRecipes = Object.entries(filterRecipes)
     arrFilterRecipes.forEach((item) => {
       
       if(item[1]){
         finishFilterRecipes = finishFilterRecipes.filter(recipe => {
-          return recipe.ingredients.join(' ').toLowerCase().includes(item[0].toLowerCase())
+          return recipe.ingredients.join(' ').includes(item[0])
+          // return recipe.ingredients.join(' ').toLowerCase().includes(item[0].toLowerCase())
         })
       }
     })
     createFinishArrFilterRecipes( finishFilterRecipes )
   }
-  // console.log( finishArrFilterRecipes )
-  // function mixRecipes (arr){
-  //   for(let i = 1; i < arr.length-1; i++){
-  //     let j = Math.floor(Math.random() * i) ;
-  //     let t = arr[j];
-  //     arr[j] = arr[i-1];
-  //     arr[i-1] = t
-  //   }
-  //   return arr
-  // }
-  // recipes = mixRecipes(recipes)
+  
   const handleChange = (ev) => {
     ev.preventDefault()
     changeSearchRecipe(ev.target.value)
@@ -117,6 +110,15 @@ function Recipes(props){
 
 export default Recipes
 
-// .filter((recipe) => {
-//           return recipe.name.toLowerCase().includes(searchRecipe.toLowerCase())
-//         })
+
+
+// function mixRecipes (arr){
+  //   for(let i = 1; i < arr.length-1; i++){
+  //     let j = Math.floor(Math.random() * i) ;
+  //     let t = arr[j];
+  //     arr[j] = arr[i-1];
+  //     arr[i-1] = t
+  //   }
+  //   return arr
+  // }
+  // recipes = mixRecipes(recipes)

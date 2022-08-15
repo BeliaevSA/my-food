@@ -10,11 +10,12 @@ import RecipeInfo from './routes/recipeInfo';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />} />
         <Route path='recipes' element={<Recipes />} />
-        <Route path='recipeInfo' element={<RecipeInfo />} />
+        <Route path='recipes/:id' element={<RecipeInfo />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

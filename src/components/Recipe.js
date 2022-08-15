@@ -8,7 +8,7 @@ const Recipe = (props) => {
   const recipe = props.recipe
   return (
     <div>
-      <Link to={'/recipeInfo'} onClick={() => localStorage.setItem('recipeShow', recipe.id)}>
+      <Link to={`/recipes/${recipe.id}`}>
         <RecipeImg className={'recipeImg'} recipeId={recipe.id}/>
       </Link>
       {props.nameEating ? <div className="nameEating">{props.nameEating}</div> : null}

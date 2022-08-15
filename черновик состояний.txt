@@ -1,0 +1,11 @@
+{
+  showMenu: {
+    breakfast: 1001,
+    snack: 2002,
+    lunch: 3003,
+    supper: 4004,
+    adding: 5005,
+    all: 0
+  }
+  typeEating: breakfast/snack ...
+}

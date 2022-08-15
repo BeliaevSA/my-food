@@ -10,6 +10,7 @@ function App() {
   const [isLunch, setValueLunch] = useState(localStorage.getItem('eating-lunch'))
   const [isSupper, setValueSupper] = useState(localStorage.getItem('eating-supper'))
   const [isAdding, setValueAdding] = useState(localStorage.getItem('eating-adding'))
+  const [isAll, setValueAll] = useState(localStorage.getItem('eating-all'))
 
   const changeValueBreakfast = (value = localStorage.getItem('eating-breakfast')) => {
     setValueBreakfast(value)
@@ -26,6 +27,9 @@ function App() {
   const changeValueAdding = (value = localStorage.getItem('eating-adding')) => {
     setValueAdding(value)
   }
+  const changeValueAll = (value = localStorage.getItem('eating-all')) => {
+    setValueAll(value)
+  }
 
   // console.log(isBreakfast)
   return ( 
@@ -40,7 +44,8 @@ function App() {
         <Eating name='перекус' value='snack' eatingState={isSnack} changeEatingState={changeValueSnack}/>
         <Eating name='обед' value='lunch' eatingState={isLunch} changeEatingState={changeValueLunch}/>
         <Eating name='ужин' value='supper' eatingState={isSupper} changeEatingState={changeValueSupper}/>
-        <Eating name='дополнительное блюдо' value='adding' eatingState={isAdding} changeEatingState={changeValueSupper}/>
+        <Eating name='дополнительные рецепты' value='adding' eatingState={isAdding} changeEatingState={changeValueAdding}/>
+        <Eating name='все рецепты' value='all' eatingState={isAll} changeEatingState={changeValueAll}/>
       </div>
     </div>
   );

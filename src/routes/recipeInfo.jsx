@@ -1,20 +1,17 @@
-import { RecipeHeader } from '../components/RecipeHeader'
 import {recipesAll} from '../recipes/recipesAll'
-import { RecipeImg } from '../components/RecipeImg'
 import { RecipeIngredients } from '../components/RecipeIngredients'
 import { RecipeCcal } from '../components/RecipeCcal'
 import { RecipeInstruction } from '../components/RecipeInstruction'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { HeaderButtonBack } from '../components/HeaderButtonBack'
-import { Button } from '../components/Button'
-import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import '../styles/App.css';
-// import './styles/recipeInfo.css';
 
 
 function RecipeInfo (props){
+  const {id} = useParams()
   const recipe = recipesAll.filter(recipe => {
-    return recipe.id === +localStorage.getItem('recipeShow')
+    return recipe.id === +id
   })[0]
   return (
     <div className='recipeInfo-body'>
@@ -27,7 +24,7 @@ function RecipeInfo (props){
       <div className='recipeInfo' name='recipeInfo'>
         <section className='recipeInfo_container'>
           <img 
-            src={`./images/${recipe.id}.jpg`} 
+            src={`../images/${recipe.id}.jpg`} 
             alt={recipe.name} 
             width='100%' 
             className='recipeInfo__img'
@@ -45,15 +42,17 @@ function RecipeInfo (props){
           </div>
         </section>
       </div>
-      {/* <Link to={'/'} 
-        className="" 
-        onClick={() => localStorage.setItem(`eating-${localStorage.getItem('eatingValue')}`, recipe.id)}
-      >
-        <Button style={{fontSize: '1.2rem', margin: '0 auto 50px'}} className='btn-recipe' value="Добавить"/>
-      </Link> */}
+      
       
     </div>
   )
 }
 
 export default RecipeInfo
+
+/* <Link to={'/'} 
+        className="" 
+        onClick={() => localStorage.setItem(`eating-${localStorage.getItem('eatingValue')}`, recipe.id)}
+      >
+        <Button style={{fontSize: '1.2rem', margin: '0 auto 50px'}} className='btn-recipe' value="Добавить"/>
+      </Link> */
