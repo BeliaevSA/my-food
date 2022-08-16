@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Eating from './components/Eating';
 import './styles/App.css';
 import { HeaderTitle } from './components/HeaderTitle'
@@ -6,35 +6,8 @@ import { HeaderTitle } from './components/HeaderTitle'
 
 
 function App() {
-  
+  const showMenu = useSelector(state => state.showMenu)
 
-  const [isBreakfast, setValueBreakfast] = useState(localStorage.getItem('eating-breakfast'))
-  const [isSnack, setValueSnack] = useState(localStorage.getItem('eating-snack'))
-  const [isLunch, setValueLunch] = useState(localStorage.getItem('eating-lunch'))
-  const [isSupper, setValueSupper] = useState(localStorage.getItem('eating-supper'))
-  const [isAdding, setValueAdding] = useState(localStorage.getItem('eating-adding'))
-  const [isAll, setValueAll] = useState(localStorage.getItem('eating-all'))
-
-  const changeValueBreakfast = (value = localStorage.getItem('eating-breakfast')) => {
-    setValueBreakfast(value)
-  }
-  const changeValueSnack = (value = localStorage.getItem('eating-snack')) => {
-    setValueSnack(value)
-  }
-  const changeValueLunch = (value = localStorage.getItem('eating-lunch')) => {
-    setValueLunch(value)
-  }
-  const changeValueSupper = (value = localStorage.getItem('eating-supper')) => {
-    setValueSupper(value)
-  }
-  const changeValueAdding = (value = localStorage.getItem('eating-adding')) => {
-    setValueAdding(value)
-  }
-  const changeValueAll = (value = localStorage.getItem('eating-all')) => {
-    setValueAll(value)
-  }
-
-  // console.log(isBreakfast)
   return ( 
     <div>
       <header className="header-container" >
@@ -43,12 +16,13 @@ function App() {
         </div>
       </header>
       <div className="App" name='app'>
-        <Eating name='завтрак' value='breakfast' eatingState={isBreakfast} changeEatingState={changeValueBreakfast}/>
-        <Eating name='перекус' value='snack' eatingState={isSnack} changeEatingState={changeValueSnack}/>
-        <Eating name='обед' value='lunch' eatingState={isLunch} changeEatingState={changeValueLunch}/>
-        <Eating name='ужин' value='supper' eatingState={isSupper} changeEatingState={changeValueSupper}/>
-        <Eating name='дополнительные рецепты' value='adding' eatingState={isAdding} changeEatingState={changeValueAdding}/>
-        <Eating name='все рецепты' value='all' eatingState={isAll} changeEatingState={changeValueAll}/>
+        <Eating name='завтрак' value='breakfast' eatingState={showMenu.breakfast} />
+        <Eating name='перекус' value='snack' eatingState={showMenu.snack} />
+        <Eating name='обед' value='lunch' eatingState={showMenu.lunch} />
+        <Eating name='ужин' value='supper' eatingState={showMenu.supper} />
+        <Eating name='дополнительные рецепты' value='adding' eatingState={showMenu.adding} />
+        <Eating name='все рецепты' value='all' eatingState={showMenu.all} />
+        
       </div>
     </div>
   );

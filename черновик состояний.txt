@@ -1,15 +1,15 @@
 {
-  showMenu: {
-    breakfast: 1001,
-    snack: 2002,
-    lunch: 3003,
-    supper: 4004,
-    adding: 5005,
-    all: 0
-  },
-  typeEating: breakfast/snack ...,
+                              showMenu: {
+                                breakfast: 1001,
+                                snack: 2002,
+                                lunch: 3003,
+                                supper: 4004,
+                                adding: 5005,
+                                all: 0
+                              },
+                              typeEating: breakfast/snack ...,
   isFilterButton: true/false,
-  valueInputSearch: 'Сыриники',
+  valueInputSearch: 'Сырники',
   isFilterChacked: {},
   filterRecipes: [recipes],
   isIngredientButton: true

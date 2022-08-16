@@ -3,7 +3,7 @@ import { createSlice }  from "@reduxjs/toolkit";
 const typeEatingSlice = createSlice({
   name: 'typeEating',
   initialState: {
-    value: localStorage.getItem('typeEating')??''
+    value: localStorage.getItem('typeEating') ?? ''
   },
   reducers: {
     setTypeEating(state, action){

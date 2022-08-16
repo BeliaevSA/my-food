@@ -16,13 +16,8 @@ export const SearchRecipe = (props) => {
   const  handlerClickReset = (ev) => {
     (() => {
       return props.setFilterRecipe({})
-      // console.log(props.filterRecipes)
     })()
-    
-    // props.useFilterRecipe()
-    // console.log(props.filterRecipes)
   }
-  // console.log(props.filterRecipes)
   return (
     <form action=""  className={props.className} onSubmit={(ev) => ev.preventDefault()} >
       <FilterRecipes changeStateFilter={changeStateFilter}/>
