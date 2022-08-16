@@ -4,11 +4,13 @@ import RecipeAll from '../components/RecipeAll'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { SearchRecipe } from '../components/SearchRecipe';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeIsFilterButton } from '../store/booleanValuesSlice';
 import { Button } from '../components/Button';
 import { HeaderButtonBack } from '../components/HeaderButtonBack';
 
 function Recipes(props){
+  const dispatch = useDispatch()
 
   const typeEating = useSelector(state => state.typeEating.value)
 
@@ -39,19 +41,18 @@ function Recipes(props){
       headerTitle = 'Все рецепты'
   };
 
-  const [valueFilterButton, setValueFilterButton] = useState(true)
+  const isFilterButton = useSelector(state => state.booleanValues.isFilterButton)
+  const isFilterChacked = useSelector(state => state.booleanValues.isFilterChacked)
 
-  const changeValueFilterButton = () => {
-    setValueFilterButton(valueFilterButton => !valueFilterButton)
-  }
+  const fnChangeIsFilterButton = () => dispatch(changeIsFilterButton())
 
   const [ searchRecipe, changeSearchRecipe ] = useState('')
-  const [ filterRecipes, setFilterRecipe ] = useState({})
   const [ finishArrFilterRecipes, createFinishArrFilterRecipes] = useState(recipes)
 
   const useFilterRecipe = (ev) => {
     let finishFilterRecipes = recipes
-    const arrFilterRecipes = Object.entries(filterRecipes)
+    console.log(isFilterChacked)
+    const arrFilterRecipes = Object.entries(isFilterChacked)
     arrFilterRecipes.forEach((item) => {
       
       if(item[1]){
@@ -66,7 +67,6 @@ function Recipes(props){
   const handleChange = (ev) => {
     ev.preventDefault()
     changeSearchRecipe(ev.target.value)
-
   }
   return (
     <div>
@@ -74,16 +74,13 @@ function Recipes(props){
         <div className="header">
           <HeaderButtonBack toPath='/'/>
           <HeaderTitle title={headerTitle} toName='searchRecipe'/>
-          <Button value='&#128269;' className='header-btns__search' onclick={changeValueFilterButton}/>
+          <Button value='&#128269;' className='header-btns__search' onclick={fnChangeIsFilterButton}/>
         </div>
         <SearchRecipe 
           changeSearchRecipe={changeSearchRecipe} 
           searchRecipe={searchRecipe} 
-          className={valueFilterButton ? "search-recipe-none" : "search-recipe"} 
-          filterRecipes={filterRecipes} 
-          setFilterRecipe={setFilterRecipe}
+          className={isFilterButton ? "search-recipe" : "search-recipe-none"}
           useFilterRecipe={useFilterRecipe}
-          changeValueFilterButton={changeValueFilterButton}
         />
       </header>
       <div className='searchRecipe-container'>

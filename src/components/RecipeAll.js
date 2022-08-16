@@ -8,13 +8,11 @@ import { setIdForShowRecipe } from "../store/showMenuSlice"
 
 const RecipeAll = (props) => {
   const dispatch = useDispatch()
-
   const fnSetIdForShowRecipe = () => dispatch(setIdForShowRecipe({typeEating: typeEating, id: recipe.id}))
 
   const typeEating = useSelector(state => state.typeEating.value)
 
   const [valueButton, setValueButton] = useState(true)
-
   const changeValueButton = () => {
     setValueButton(valueButton => !valueButton)
   }
@@ -23,10 +21,7 @@ const RecipeAll = (props) => {
 
   return (
     <div className="recipe">
-      <Recipe 
-        key={recipe.id} 
-        recipe={recipe} 
-        valueButton={valueButton}/>
+      <Recipe key={recipe.id} recipe={recipe} />
       <RecipeIngredients 
         recipeIngredients={recipe.ingredients}
         className={valueButton ? "ingredients-none" : "ingredients"}
