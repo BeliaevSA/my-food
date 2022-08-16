@@ -9,7 +9,7 @@
                               },
                               typeEating: breakfast/snack ...,
                               isFilterButton: true/false,
-  valueInputSearch: 'Сырники',
-          isFilterChacked: {},
+            valueInputSearch: 'Сырники',
+                              isFilterChacked: {},
   filterRecipes: [recipes]
 }

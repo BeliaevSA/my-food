@@ -2,7 +2,6 @@ import { FilterRecipesItem } from './FilterRecipesItem'
 
 export const FilterRecipes = (props) => {
   
-
   return (
     <div className="filter-recipes">
       <FilterRecipesItem value='Творог' dataValue='Творог' />

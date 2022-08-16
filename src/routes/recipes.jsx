@@ -6,6 +6,7 @@ import { SearchRecipe } from '../components/SearchRecipe';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeIsFilterButton } from '../store/booleanValuesSlice';
+import { changeValueInputSearch } from '../store/valueInputSearchSlice';
 import { Button } from '../components/Button';
 import { HeaderButtonBack } from '../components/HeaderButtonBack';
 
@@ -46,12 +47,11 @@ function Recipes(props){
 
   const fnChangeIsFilterButton = () => dispatch(changeIsFilterButton())
 
-  const [ searchRecipe, changeSearchRecipe ] = useState('')
+  const valueInputSearch = useSelector(state => state.valueInputSearch.value)
   const [ finishArrFilterRecipes, createFinishArrFilterRecipes] = useState(recipes)
 
   const useFilterRecipe = (ev) => {
     let finishFilterRecipes = recipes
-    console.log(isFilterChacked)
     const arrFilterRecipes = Object.entries(isFilterChacked)
     arrFilterRecipes.forEach((item) => {
       
@@ -63,11 +63,12 @@ function Recipes(props){
     })
     createFinishArrFilterRecipes( finishFilterRecipes )
   }
-  
+
   const handleChange = (ev) => {
     ev.preventDefault()
-    changeSearchRecipe(ev.target.value)
+    dispatch(changeValueInputSearch({value: ev.target.value}))
   }
+
   return (
     <div>
       <header className="header-container">
@@ -77,20 +78,18 @@ function Recipes(props){
           <Button value='&#128269;' className='header-btns__search' onclick={fnChangeIsFilterButton}/>
         </div>
         <SearchRecipe 
-          changeSearchRecipe={changeSearchRecipe} 
-          searchRecipe={searchRecipe} 
           className={isFilterButton ? "search-recipe" : "search-recipe-none"}
           useFilterRecipe={useFilterRecipe}
         />
       </header>
       <div className='searchRecipe-container'>
         <h3 name='searchRecipe'>Поиск рецепта</h3>
-        <input type='text' className='input_search' onChange={handleChange} value={props.searchRecipe} autoComplete="off" />
+        <input type='text' className='input_search' onChange={handleChange} value={valueInputSearch} autoComplete="off" />
       </div>
       <div className="recipes" name='recipe'>
         
         {finishArrFilterRecipes.filter((recipe) => {
-          return recipe.name.toLowerCase().includes(searchRecipe.toLowerCase())
+          return recipe.name.toLowerCase().includes(valueInputSearch.toLowerCase())
         })
         .map((recipe, index) => {
           return (
