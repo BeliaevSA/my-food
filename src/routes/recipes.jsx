@@ -1,39 +1,37 @@
-import breakfast from '../recipes/recipes-breakfast.json'
-import snack from '../recipes/recipes-snack.json'
-import lunch from '../recipes/recipes-lunch.json'
-import supper from '../recipes/recipes-supper.json'
-import adding from '../recipes/recipes-adding.json'
 import { recipesAll } from '../recipes/recipesAll'
 import '../styles/App.css';
 import RecipeAll from '../components/RecipeAll'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { SearchRecipe } from '../components/SearchRecipe';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Button } from '../components/Button';
 import { HeaderButtonBack } from '../components/HeaderButtonBack';
 
 function Recipes(props){
 
+  const typeEating = useSelector(state => state.typeEating.value)
+
   let recipes, headerTitle
-  switch(localStorage.getItem('eatingValue')){
+  switch(typeEating){
     case 'breakfast':
-      recipes = breakfast
+      recipes = recipesAll.filter(recipe => recipe.id > 1000 && recipe.id < 2000)
       headerTitle = 'Завтрак'
       break
     case 'snack':
-      recipes = snack
+      recipes = recipesAll.filter(recipe => recipe.id > 2000 && recipe.id < 3000)
       headerTitle = 'Перекус'
       break
     case 'lunch':
-      recipes = lunch
+      recipes = recipesAll.filter(recipe => recipe.id > 3000 && recipe.id < 4000)
       headerTitle = 'Обед'
       break
     case 'supper':
-      recipes = supper
+      recipes = recipesAll.filter(recipe => recipe.id > 4000 && recipe.id < 5000)
       headerTitle = 'Ужин'
       break
     case 'adding':
-      recipes = adding
+      recipes = recipesAll.filter(recipe => recipe.id > 5000 && recipe.id < 6000)
       headerTitle = 'Дополнительные рецепты'
       break
     default:
@@ -59,7 +57,6 @@ function Recipes(props){
       if(item[1]){
         finishFilterRecipes = finishFilterRecipes.filter(recipe => {
           return recipe.ingredients.join(' ').includes(item[0])
-          // return recipe.ingredients.join(' ').toLowerCase().includes(item[0].toLowerCase())
         })
       }
     })
@@ -100,7 +97,7 @@ function Recipes(props){
         })
         .map((recipe, index) => {
           return (
-          <RecipeAll key={index} nameEating={props.nameEating} recipe={recipe} eating={localStorage.getItem('eatingValue')} />
+          <RecipeAll key={index} nameEating={props.nameEating} recipe={recipe} eating={typeEating} />
           )
         })}
       </div>

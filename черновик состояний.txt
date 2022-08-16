@@ -6,6 +6,11 @@
     supper: 4004,
     adding: 5005,
     all: 0
-  }
-  typeEating: breakfast/snack ...
+  },
+  typeEating: breakfast/snack ...,
+  isFilterButton: true/false,
+  valueInputSearch: 'Сыриники',
+  isFilterChacked: {},
+  filterRecipes: [recipes],
+  isIngredientButton: true
 }

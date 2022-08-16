@@ -1,5 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import typeEatingReducer from "./typeEatingSlice"
 
-export default configureStore({
-  reducer: {}
+export const store = configureStore({
+  reducer: {
+    typeEating: typeEatingReducer,
+
+  }
 })

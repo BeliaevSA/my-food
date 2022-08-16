@@ -4,7 +4,10 @@ import './styles/App.css';
 import { HeaderTitle } from './components/HeaderTitle'
 
 
+
 function App() {
+  
+
   const [isBreakfast, setValueBreakfast] = useState(localStorage.getItem('eating-breakfast'))
   const [isSnack, setValueSnack] = useState(localStorage.getItem('eating-snack'))
   const [isLunch, setValueLunch] = useState(localStorage.getItem('eating-lunch'))
